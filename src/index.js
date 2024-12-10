@@ -11,6 +11,10 @@ const PORT = process.env.PORT || '5001';
 
 app.use(express.json())
 
+app.get('/', (req, res) => {
+  res.send('Success!');
+});
+
 app.get("/categories", async (req, res) => {
   const categories = await getCategories();
   res.send(categories);
@@ -50,8 +54,12 @@ app.use((err, req, res, next)=> {
   res.status(500).send('Oops! Something went wrong!');
 })
 
-app.listen(PORT, HOST, ()=>{
-  console.log(`Server runng on http://${HOST}:${PORT}`);
+// app.listen(PORT, HOST, ()=>{
+//   console.log(`Server runng on http://${HOST}:${PORT}`);
+// })
+
+app.listen(PORT, () => {
+  console.log(`Server runng on ${PORT}`);
 })
 
 // export default app();
