@@ -32,7 +32,7 @@ export async function createCategory(categoryName) {
 
 // Get all products
 export async function getProducts() {
-  const [rows] = await pool.query("SELECT c.categoryName, p.productID, p.productName, p.unitPrice, p.unitValue, p.unitOfMeasurement FROM categories c RIGHT JOIN products p ON c.categoryID = p.categoryID ORDER BY c.categoryName, p.productName;");
+  const [rows] = await pool.query("SELECT c.categoryName, p.productID, p.barcode, p.productName, p.unitPrice, p.unitValue, p.unitOfMeasurement FROM categories c RIGHT JOIN products p ON c.categoryID = p.categoryID ORDER BY c.categoryName, p.productName;");
   return rows;
 }
 
